@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ouverture de la Boutique dans 1 mois</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .countdown {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        main {
+            text-align: center;
+            margin: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Styles spécifiques pour les écrans plus petits (mobiles) */
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .countdown {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Notre Boutique</h1>
+        <p>Ouverture dans</p>
+        <div class="countdown">
+            <span id="days">30</span> jours
+            <span id="hours">00</span> heures
+            <span id="minutes">00</span> minutes
+            <span id="seconds">00</span> secondes
+        </div>
+    </header>
+    <main>
+        <p>Merci de patienter pendant que nous préparons notre boutique en ligne.</p>
+        <p>Revenez dans un mois pour découvrir nos produits exceptionnels !</p>
+    </main>
+    <footer>
+        <p>&copy; 2023 Notre Boutique</p>
+    </footer>
+    <script>
+        // Date de l'ouverture de la boutique (dans un mois)
+        const openingDate = new Date();
+        openingDate.setMonth(openingDate.getMonth() + 1);
+
+        function updateCountdown() {
+            const currentDate = new Date();
+            const timeDifference = openingDate - currentDate;
+
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000); // Met à jour le compte à rebours chaque seconde
+    </script>
+</body>
+</html>
